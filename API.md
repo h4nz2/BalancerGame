@@ -59,8 +59,8 @@
   
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** 
+  * **Code:** 200
+  * **Content:** 
     `[ {name: "MoonWalker78", score: 500, date: Jan 20 2017 19:35:27}, 
     {name: "Johny", score: 800, date: Jun 25 2017 09:45:33},
     {name: "Lady", score: 100, date: Feb 08 2015 20:00:00} ]`
