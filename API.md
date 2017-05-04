@@ -1,4 +1,5 @@
 **Players**
+
 ----
 **Get score(s) of a player**
 
