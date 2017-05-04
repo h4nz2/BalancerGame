@@ -27,8 +27,8 @@
   
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `{ name: "MoonWalker78", score: 500, date: Jan 20 2017 19:35:27 }`
+  * **Code:** 200
+  * **Content:** `{ name: "MoonWalker78", score: 500, date: Jan 20 2017 19:35:27 }`
 
 * **Error Response:**
   
@@ -101,6 +101,3 @@
 * **Error Response:**
 
   * **Code:** 400 'Bad request: Missing data parameters'
-  
-
-  
