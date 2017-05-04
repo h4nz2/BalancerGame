@@ -15,13 +15,13 @@
 
     `GET`
 
-* **URL PARAMS**
+* **URL Parameters**
 
   **Required:**
   
   `name=[String]`
   
-* **Data Params**
+* **Data Parameters**
 
   None
   
@@ -32,21 +32,7 @@
 
 * **Error Response:**
   
-  * **Code:** 400 'Player does not exist'
- 
-    
-* **Sample Call:**
-
-```javascript
-    $.ajax({
-      url: "/players/MoonWalker78",
-      dataType: "json",
-      type : "GET",
-      success : function(r) {
-        console.log(r);
-      }
-    });
-  ```
+  * **Code:** 400 'Player does not exist' 
   
 ----
 **Get all scores**
@@ -63,11 +49,11 @@
 
   `GET`
 
-* **URL Params**
+* **URL Parameters**
 
   None
   
-* **Data Params:**
+* **Data Parameters**
 
   None
   
@@ -80,16 +66,41 @@
     {name: "Lady", score: 100, date: Feb 08 2015 20:00:00} ]`
     
 * **Error Response**
+  
+----
+**Post a score**
 
-* **Sample Call:**
+* **Description**
 
-```javascript
-    $.ajax({
-      url: "/scores",
-      dataType: "json",
-      type : "GET",
-      success : function(r) {
-        console.log(r);
-      }
-    });
-  ```
+  Posts a new score.
+  
+* **URL**
+
+    /score/:name
+    
+* **Method**
+
+    `POST`
+    
+* **URL Parameters**
+
+  **Required**
+  `name=[String]`
+  
+* **Data Parameters**
+
+  `name=[String]`
+  `score=[Int]`
+  `date=[String]`
+  
+* **Success Response:**
+
+  * **Code** 200 <br />
+    **Content** None
+    
+* **Error Response:**
+
+  * **Code:** 400 'Bad request: Missing data parameters'
+  
+
+  
