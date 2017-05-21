@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Balancer game</string>
+
+    <string name="start">Start</string>
+    <string name="scoreboard">Scoreboard</string>
+
+    <string name="up">Up</string>
+    <string name="down">Down</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="getReady">Get ready!</string>
+</resources>

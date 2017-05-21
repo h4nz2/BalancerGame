@@ -5,10 +5,10 @@ var app = express();
 var players = require('./routes/players.js')
 
 
-var port = 5000;
+var port = 3056;
 
 app.get('/players', players.findAll);
-app.get('/players/:name', players.findByName);
+app.get('/player', players.findByName);
 
 app.listen(port);
 console.log('Listening on port ' + port + '...');
