@@ -12,13 +12,34 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.*;
+
 
 @Path("/score")
 public class ScoreRest {
     @GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Scores getTrackInJSON() {
-		Scores score = new Scores(-1, 500, "Johny", "March 15");
-		return score;
+            Scores score = new Scores();
+            
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", "root", "1234");            
+                Statement statement = connection.createStatement();            
+                ResultSet resultSet = statement.executeQuery("select * from scores"); 
+                if(resultSet.next()){
+                    score.setId(resultSet.getInt("id"));
+                    score.setName(resultSet.getString("name"));
+                    score.setScore(resultSet.getInt("score"));
+                    score.setDate(resultSet.getString("date"));
+                }
+            /*while(resultSet.next()){
+                System.out.println("ID: " + resultSet.getInt("id") + ", Name: " + resultSet.getString("name") + ", Score: " + resultSet.getInt("score") + ", Date: " + resultSet.getString("date"));
+            }*/
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            
+            return score;
 	}
 }
