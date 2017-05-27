@@ -15,6 +15,13 @@ public class Score {
     @Expose
     private String date;
 
+    public Score(){};
+
+    public Score(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+
     public String getName() {
         return name;
     }

@@ -13,37 +13,61 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 
-@Path("/score")
+@Path("/scores")
 public class ScoreRest {
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "1234";
+    
     @GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Scores> getTrackInJSON() {
-            ArrayList<Scores> scores = new ArrayList<Scores>();
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Scores> getScore() {
+        ArrayList<Scores> scores = new ArrayList<Scores>();
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", USERNAME, PASSWORD);            
+            Statement statement = connection.createStatement();            
+            ResultSet resultSet = statement.executeQuery("select * from scores"); 
+            while(resultSet.next()){
+                Scores score = new Scores();
+                score.setId(resultSet.getInt("id"));
+                score.setName(resultSet.getString("name"));
+                score.setScore(resultSet.getInt("score"));
+                score.setDate(resultSet.getString("date"));
+                scores.add(score);
+            }      
+            connection.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+        return scores;
+    }
+    
+    @POST
+    @Path("/post")
+    public Response postScore(Scores score) {
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", USERNAME, PASSWORD); 
+            String query = "insert into scores(name, score, date) values(?, ?, ?)";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString (1, score.getName());
+            preparedStmt.setInt(2, score.getScore());
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            java.util.Date date = new java.util.Date();
+            preparedStmt.setString(3, dateFormat.format(date));
+            preparedStmt.execute();
             
-            try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", "root", "1234");            
-                Statement statement = connection.createStatement();            
-                ResultSet resultSet = statement.executeQuery("select * from scores"); 
-                while(resultSet.next()){
-                    Scores score = new Scores();
-                    score.setId(resultSet.getInt("id"));
-                    score.setName(resultSet.getString("name"));
-                    score.setScore(resultSet.getInt("score"));
-                    score.setDate(resultSet.getString("date"));
-                    scores.add(score);
-                }
-            /*while(resultSet.next()){
-                System.out.println("ID: " + resultSet.getInt("id") + ", Name: " + resultSet.getString("name") + ", Score: " + resultSet.getInt("score") + ", Date: " + resultSet.getString("date"));
-            }*/
-            
-        } catch (Exception e) {
-            e.printStackTrace();
+            String result = "Score saved : " + score;
+            return Response.status(201).entity(result).build();
+        } catch (Exception e){
+            return Response.status(500).build();
         }
-            
-            return scores;
-	}
+    } 
 }

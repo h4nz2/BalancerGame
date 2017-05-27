@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String url = "http://213.124.209.37:28429/BalancerGameServer";
 
     private Button startButton;
     private Button scoreboardButton;

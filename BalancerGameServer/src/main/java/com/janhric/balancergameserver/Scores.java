@@ -124,7 +124,7 @@ public class Scores implements Serializable {
 
     @Override
     public String toString() {
-        return "com.janhric.restservertest.Scores[ id=" + id + "name: " + name + "score: " + score + " ]";
+        return "com.janhric.restservertest.Scores[ id=" + id + ", name: " + name + ", score: " + score + ", date: " + date + " ]";
     }
     
 }
