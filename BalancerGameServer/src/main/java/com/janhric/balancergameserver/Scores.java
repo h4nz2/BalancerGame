@@ -50,6 +50,10 @@ public class Scores implements Serializable {
     @Size(max = 20)
     @Column(name = "date")
     private String date;
+    @Column(name = "latitude")
+    private float latitude;
+    @Column(name = "longitude")
+    private float longitude;
 
     public Scores() {
     }
@@ -63,11 +67,13 @@ public class Scores implements Serializable {
         this.score = score;
     }
     
-    public Scores(Integer id, int score, String name, String date) {
+    public Scores(Integer id, int score, String name, String date, float latitude, float longitude) {
         this.id = id;
         this.score = score;
         this.name = name;
         this.date = date;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Integer getId() {
@@ -101,6 +107,24 @@ public class Scores implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+    
+    public void setLatitude(float latitude){
+        this.latitude = latitude;
+    }
+    
+    public float getLatitude(){
+        return this.latitude;
+    }
+    
+    public void setLongitude(float longitude){
+        this.longitude = longitude;
+    }
+    
+    public float getLongitude(){
+        return this.longitude;
+    }
+    
+    
 
     @Override
     public int hashCode() {
@@ -124,7 +148,11 @@ public class Scores implements Serializable {
 
     @Override
     public String toString() {
-        return "com.janhric.restservertest.Scores[ id=" + id + ", name: " + name + ", score: " + score + ", date: " + date + " ]";
+        return "com.janhric.restservertest.Scores[ id=" + id + 
+                ", name: " + name + 
+                ", score: " + score + 
+                ", date: " + date + 
+                "coordinates: " + latitude + ", " + longitude + "]";
     }
     
 }

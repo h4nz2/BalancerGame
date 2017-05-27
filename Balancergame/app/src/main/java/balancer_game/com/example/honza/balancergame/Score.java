@@ -14,12 +14,36 @@ public class Score {
     @SerializedName("date")
     @Expose
     private String date;
+    @SerializedName("latitude")
+    @Expose
+    private float latitude;
+    @SerializedName("longitude")
+    @Expose
+    private float longitude;
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
 
     public Score(){};
 
-    public Score(String name, int score){
+    public Score(String name, int score, float latitude, float longitude){
         this.name = name;
         this.score = score;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getName() {

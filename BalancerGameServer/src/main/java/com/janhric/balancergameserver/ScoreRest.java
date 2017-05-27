@@ -40,6 +40,8 @@ public class ScoreRest {
                 score.setName(resultSet.getString("name"));
                 score.setScore(resultSet.getInt("score"));
                 score.setDate(resultSet.getString("date"));
+                score.setLatitude(resultSet.getFloat("latitude"));
+                score.setLongitude(resultSet.getFloat("longitude"));
                 scores.add(score);
             }      
             connection.close();
@@ -55,13 +57,15 @@ public class ScoreRest {
     public Response postScore(Scores score) {
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", USERNAME, PASSWORD); 
-            String query = "insert into scores(name, score, date) values(?, ?, ?)";
+            String query = "insert into scores(name, score, date, latitude, longitude) values(?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString (1, score.getName());
             preparedStmt.setInt(2, score.getScore());
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             java.util.Date date = new java.util.Date();
             preparedStmt.setString(3, dateFormat.format(date));
+            preparedStmt.setFloat(4, score.getLatitude());
+            preparedStmt.setFloat(5, score.getLongitude());
             preparedStmt.execute();
             
             String result = "Score saved : " + score;

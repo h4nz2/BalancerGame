@@ -9,4 +9,6 @@
     <string name="left">Left</string>
     <string name="right">Right</string>
     <string name="getReady">Get ready!</string>
+    <string name="set">Set!</string>
+    <string name="score">Score:" "</string>
 </resources>
