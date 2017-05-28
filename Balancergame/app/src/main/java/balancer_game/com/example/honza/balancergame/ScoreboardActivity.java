@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -14,7 +13,7 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static balancer_game.com.example.honza.balancergame.MainActivity.url;
+import static balancer_game.com.example.honza.balancergame.MainActivity.URL;
 
 public class ScoreboardActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -32,7 +31,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        RestAdapter radapter=new RestAdapter.Builder().setEndpoint(url).build();
+        RestAdapter radapter=new RestAdapter.Builder().setEndpoint(URL).build();
 
         HTTPInterface restInt = radapter.create(HTTPInterface.class);
 

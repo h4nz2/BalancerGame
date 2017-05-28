@@ -25,4 +25,20 @@
         <servlet-name>rest</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+    <!-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>SecureBalancerData</web-resource-name>
+            <description>
+               Security constraint for
+               data from the Balancer game
+            </description>
+            <url-pattern>/scores</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+       </user-data-constraint>
+    </security-constraint>
+    </!-->
 </web-app>

@@ -3,6 +3,13 @@
 
     <string name="start">Start</string>
     <string name="scoreboard">Scoreboard</string>
+    <string name="enterYourName">Enter your name:</string>
+    <string name="unknown">Unknown</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructionsText">Text on the screen will tell you
+        which way you should incline your phone and your task is to
+        do it as quickly as possible.</string>
+    <string name="gotIt">Got it!</string>
 
     <string name="up">Up</string>
     <string name="down">Down</string>
@@ -10,5 +17,9 @@
     <string name="right">Right</string>
     <string name="getReady">Get ready!</string>
     <string name="set">Set!</string>
-    <string name="score">Score:" "</string>
+    <string name="score">Score:</string>
+    <string name="gameOver">GAME OVER</string>
+
+    <string name="mainMenu">Main menu</string>
+
 </resources>

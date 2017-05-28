@@ -17,8 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
-
+import javax.ws.rs.QueryParam;
 
 @Path("/scores")
 public class ScoreRest {
@@ -27,13 +26,13 @@ public class ScoreRest {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Scores> getScore() {
+    public List<Scores> getScores() {
         ArrayList<Scores> scores = new ArrayList<Scores>();
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", USERNAME, PASSWORD);            
             Statement statement = connection.createStatement();            
-            ResultSet resultSet = statement.executeQuery("select * from scores"); 
+            ResultSet resultSet = statement.executeQuery("select * from scores order by score desc, id asc"); 
             while(resultSet.next()){
                 Scores score = new Scores();
                 score.setId(resultSet.getInt("id"));
@@ -45,10 +44,35 @@ public class ScoreRest {
                 scores.add(score);
             }      
             connection.close();
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return scores;
     }
-
+    
+    @GET
+    @Path("/player")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Scores> getScore(@QueryParam("name") String name) {
+        ArrayList<Scores> scores = new ArrayList<Scores>();
+        
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", USERNAME, PASSWORD);            
+            Statement statement = connection.createStatement();            
+            ResultSet resultSet = statement.executeQuery("select * from scores where name = " + name + " order by score desc");
+            while(resultSet.next()){
+                Scores score = new Scores();
+                score.setId(resultSet.getInt("id"));
+                score.setName(resultSet.getString("name"));
+                score.setScore(resultSet.getInt("score"));
+                score.setDate(resultSet.getString("date"));
+                score.setLatitude(resultSet.getFloat("latitude"));
+                score.setLongitude(resultSet.getFloat("longitude"));
+                scores.add(score);
+            }             
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         return scores;
     }
     

@@ -7,6 +7,7 @@
     tools:context="balancer_game.com.example.honza.balancergame.MainActivity">
 
     <Button
+        style="@style/buttonText"
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +17,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="24dp"
+        app:layout_constraintHorizontal_bias="0.503" />
 
     <Button
         android:id="@+id/scoreboard"
@@ -27,6 +29,50 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
+        style="@style/buttonText"
+        app:layout_constraintHorizontal_bias="0.502"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/startButton" />
+        app:layout_constraintBottom_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enterYourName"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/nameEditText"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAppearance="@style/gameText"/>
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAppearance="@style/gameText"
+        app:layout_constraintHorizontal_bias="0.538" />
+
+    <Button
+        android:id="@+id/instructionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instructions"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/scoreboard"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/buttonText"/>
+
 </android.support.constraint.ConstraintLayout>
