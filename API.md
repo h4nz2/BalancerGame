@@ -9,7 +9,7 @@
     
 * **URL**
 
-    /players/:name
+    /scores/player
     
 * **Method:**
 
@@ -18,6 +18,8 @@
 * **URL Parameters**
 
   **Required:**
+  
+  If you do not include the name you will get an empty array.
   
   `name=[String]`
   
@@ -28,11 +30,15 @@
 * **Success Response:**
 
   * **Code:** 200
-  * **Content:** `{ name: "MoonWalker78", score: 500, date: Jan 20 2017 19:35:27 }`
-
-* **Error Response:**
-  
-  * **Code:** 400 'Player does not exist' 
+  * **Content:** 
+  `{
+    "date": "29/05/2017 00:01:21",
+    "id": 60,
+    "latitude": 52.3708,
+    "longitude": 4.91079,
+    "name": "CrackDemon",
+    "score": 10862
+  }`
   
 ----
 **Get all scores**
@@ -61,12 +67,25 @@
 
   * **Code:** 200
   * **Content:** 
-    `[ {name: "MoonWalker78", score: 500, date: Jan 20 2017 19:35:27}, 
-    {name: "Johny", score: 800, date: Jun 25 2017 09:45:33},
-    {name: "Lady", score: 100, date: Feb 08 2015 20:00:00} ]`
-    
-* **Error Response**
-  
+`[
+  {
+    "date": "29/05/2017 10:57:41",
+    "id": 61,
+    "latitude": 52.371,
+    "longitude": 4.91113,
+    "name": "Shitty green",
+    "score": 11780
+  },
+  {
+    "date": "29/05/2017 00:01:21",
+    "id": 60,
+    "latitude": 52.3708,
+    "longitude": 4.91079,
+    "name": "CrackDemon",
+    "score": 10862
+  }
+  ]`
+      
 ----
 **Post a score**
 
@@ -76,7 +95,7 @@
   
 * **URL**
 
-    /score/:name
+    /score/post
     
 * **Method**
 
@@ -84,20 +103,27 @@
     
 * **URL Parameters**
 
-  **Required**
-  `name=[String]`
+  None
   
 * **Data Parameters**
 
-  `name=[String]`
-  `score=[Int]`
-  `date=[String]`
+  `{
+    "name":[string],
+    "score":[integer],
+    "latitude":[float],
+    "longitude":[float]
+    }`
+    
   
 * **Success Response:**
 
   * **Code** 200 <br />
-    **Content** None
+    **Content** 
+    `{
+      "date": "29/05/2017 11:27:15",
+      "latitude": 5.8,
+      "longitude": 127.9,
+      "name": "Postman",
+      "score": 2000
+    }`
     
-* **Error Response:**
-
-  * **Code:** 400 'Bad request: Missing data parameters'

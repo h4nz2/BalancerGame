@@ -78,6 +78,7 @@ public class ScoreRest {
     
     @POST
     @Path("/post")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response postScore(Scores score) {
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:6000/my_database", USERNAME, PASSWORD); 
@@ -92,8 +93,8 @@ public class ScoreRest {
             preparedStmt.setFloat(5, score.getLongitude());
             preparedStmt.execute();
             
-            String result = "Score saved : " + score;
-            return Response.status(201).entity(result).build();
+            score.setDate(dateFormat.format(date));
+            return Response.status(201).entity(score).build();
         } catch (Exception e){
             return Response.status(500).build();
         }
