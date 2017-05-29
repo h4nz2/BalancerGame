@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String URL = "http://213.124.209.37:28429/BalancerGameServer";
+    public static final String URL = "http://145.28.235.109:28429/BalancerGameServer";
     public static final String NAME_KEY = "nameKey000";
 
     private Button startButton;

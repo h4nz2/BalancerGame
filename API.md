@@ -118,7 +118,7 @@
 * **Success Response:**
 
   * **Code** 200 <br />
-    **Content** 
+  * **Content** 
     `{
       "date": "29/05/2017 11:27:15",
       "latitude": 5.8,
