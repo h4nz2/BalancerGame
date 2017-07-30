@@ -20,6 +20,6 @@
     <string name="score">Score:</string>
     <string name="gameOver">GAME OVER</string>
 
-    <string name="mainMenu">Main menu</string>
+    <string name="mainMenu">Exit</string>
 
 </resources>
